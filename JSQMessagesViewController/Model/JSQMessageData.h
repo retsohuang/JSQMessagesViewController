@@ -45,21 +45,21 @@
  *
  *  @warning You must not return `nil` from this method. This value must be unique.
  */
-- (NSString *)senderId;
+- (nonnull NSString *)senderId;
 
 /**
  *  @return The display name for the user who sent the message.
  *
  *  @warning You must not return `nil` from this method.
  */
-- (NSString *)senderDisplayName;
+- (nonnull NSString *)senderDisplayName;
 
 /**
  *  @return The date that the message was sent.
  *
  *  @warning You must not return `nil` from this method.
  */
-- (NSDate *)date;
+- (nonnull NSDate *)date;
 
 /**
  *  This method is used to determine if the message data item contains text or media.
@@ -90,13 +90,13 @@
  *
  *  @warning You must not return `nil` from this method.
  */
-- (NSString *)text;
+- (nonnull NSString *)text;
 
 /**
  *  @return The media item of the message.
  *  
  *  @warning You must not return `nil` from this method.
  */
-- (id<JSQMessageMediaData>)media;
+- (nonnull id<JSQMessageMediaData>)media;
 
 @end
