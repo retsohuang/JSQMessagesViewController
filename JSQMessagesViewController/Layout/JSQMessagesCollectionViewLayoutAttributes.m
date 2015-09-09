@@ -126,7 +126,7 @@
 
 - (NSUInteger)hash
 {
-    return [self.indexPath hash];
+    return (self.indexPath).hash;
 }
 
 #pragma mark - NSCopying

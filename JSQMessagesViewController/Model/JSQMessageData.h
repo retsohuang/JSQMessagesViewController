@@ -45,21 +45,21 @@
  *
  *  @warning You must not return `nil` from this method. This value must be unique.
  */
-- (nonnull NSString *)senderId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull senderId;
 
 /**
  *  @return The display name for the user who sent the message.
  *
  *  @warning You must not return `nil` from this method.
  */
-- (nonnull NSString *)senderDisplayName;
+@property (nonatomic, readonly, copy) NSString * _Nonnull senderDisplayName;
 
 /**
  *  @return The date that the message was sent.
  *
  *  @warning You must not return `nil` from this method.
  */
-- (nonnull NSDate *)date;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
 
 /**
  *  This method is used to determine if the message data item contains text or media.
@@ -73,7 +73,7 @@
  *  @return A boolean value specifying whether or not this is a media message or a text message.
  *  Return `YES` if this item is a media message, and `NO` if it is a text message.
  */
-- (BOOL)isMediaMessage;
+@property (nonatomic, getter=isMediaMessage, readonly) BOOL mediaMessage;
 
 /**
  *  @return An integer that can be used as a table address in a hash table structure.
@@ -81,7 +81,7 @@
  *  @discussion This value must be unique for each message with distinct contents. 
  *  This value is used to cache layout information in the collection view.
  */
-- (NSUInteger)messageHash;
+@property (nonatomic, readonly) NSUInteger messageHash;
 
 @optional
 
@@ -90,13 +90,13 @@
  *
  *  @warning You must not return `nil` from this method.
  */
-- (nonnull NSString *)text;
+@property (nonatomic, readonly, copy) NSString * _Nonnull text;
 
 /**
  *  @return The media item of the message.
  *  
  *  @warning You must not return `nil` from this method.
  */
-- (nonnull id<JSQMessageMediaData>)media;
+@property (nonatomic, readonly, strong) id<JSQMessageMediaData> _Nonnull media;
 
 @end

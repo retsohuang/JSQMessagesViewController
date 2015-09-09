@@ -73,7 +73,7 @@ const CGFloat kJSQMessagesLoadEarlierHeaderViewHeight = 32.0f;
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
-    [super setBackgroundColor:backgroundColor];
+    super.backgroundColor = backgroundColor;
     self.loadButton.backgroundColor = backgroundColor;
 }
 

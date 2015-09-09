@@ -101,6 +101,6 @@
  *
  *  @return An initialized `JSQMessagesToolbarContentView` if successful, otherwise `nil`.
  */
-- (JSQMessagesToolbarContentView *)loadToolbarContentView;
+@property (nonatomic, readonly, strong) JSQMessagesToolbarContentView *loadToolbarContentView;
 
 @end

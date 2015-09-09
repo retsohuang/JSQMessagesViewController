@@ -47,7 +47,7 @@
     self = [super init];
     if (self) {
         _dateFormatter = [[NSDateFormatter alloc] init];
-        [_dateFormatter setLocale:[NSLocale currentLocale]];
+        _dateFormatter.locale = [NSLocale currentLocale];
         [_dateFormatter setDoesRelativeDateFormatting:YES];
         
         UIColor *color = [UIColor lightGrayColor];
@@ -81,8 +81,8 @@
         return nil;
     }
     
-    [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    (self.dateFormatter).dateStyle = NSDateFormatterMediumStyle;
+    (self.dateFormatter).timeStyle = NSDateFormatterShortStyle;
     return [self.dateFormatter stringFromDate:date];
 }
 
@@ -112,8 +112,8 @@
         return nil;
     }
     
-    [self.dateFormatter setDateStyle:NSDateFormatterNoStyle];
-    [self.dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    (self.dateFormatter).dateStyle = NSDateFormatterNoStyle;
+    (self.dateFormatter).timeStyle = NSDateFormatterShortStyle;
     return [self.dateFormatter stringFromDate:date];
 }
 
@@ -123,8 +123,8 @@
         return nil;
     }
     
-    [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    (self.dateFormatter).dateStyle = NSDateFormatterMediumStyle;
+    (self.dateFormatter).timeStyle = NSDateFormatterNoStyle;
     return [self.dateFormatter stringFromDate:date];
 }
 

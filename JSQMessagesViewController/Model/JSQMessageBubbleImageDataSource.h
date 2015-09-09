@@ -40,13 +40,13 @@
  *
  *  @warning You must not return `nil` from this method.
  */
-- (UIImage *)messageBubbleImage;
+@property (nonatomic, readonly, strong) UIImage *messageBubbleImage;
 
 /**
  *  @return The message bubble image for a highlighted display state.
  *
  *  @warning You must not return `nil` from this method.
  */
-- (UIImage *)messageBubbleHighlightedImage;
+@property (nonatomic, readonly, strong) UIImage *messageBubbleHighlightedImage;
 
 @end

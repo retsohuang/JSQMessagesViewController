@@ -31,7 +31,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    [self.tableView deselectRowAtIndexPath:(self.tableView).indexPathForSelectedRow animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -104,7 +104,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return (section == [tableView numberOfSections] - 1) ? @"Copyright © 2014\nJesse Squires\nMIT License" : nil;
+    return (section == tableView.numberOfSections - 1) ? @"Copyright © 2014\nJesse Squires\nMIT License" : nil;
 }
 
 #pragma mark - Table view delegate

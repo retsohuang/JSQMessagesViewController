@@ -40,6 +40,6 @@
  *
  *  @return `YES` if the text view contains text, `NO` otherwise.
  */
-- (BOOL)hasText;
+@property (nonatomic, readonly) BOOL hasText;
 
 @end

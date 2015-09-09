@@ -84,19 +84,19 @@
  *  Returns the label that is pinned to the top of the cell.
  *  This label is most commonly used to display message timestamps.
  */
-@property (weak, nonatomic, readonly, nonnull) JSQMessagesLabel *cellTopLabel;
+@property (weak, nonatomic, readonly, nullable) JSQMessagesLabel *cellTopLabel;
 
 /**
  *  Returns the label that is pinned just above the messageBubbleImageView, and below the cellTopLabel.
  *  This label is most commonly used to display the message sender.
  */
-@property (weak, nonatomic, readonly, nonnull) JSQMessagesLabel *messageBubbleTopLabel;
+@property (weak, nonatomic, readonly, nullable) JSQMessagesLabel *messageBubbleTopLabel;
 
 /**
  *  Returns the label that is pinned to the bottom of the cell.
  *  This label is most commonly used to display message delivery status.
  */
-@property (weak, nonatomic, readonly, nonnull) JSQMessagesLabel *cellBottomLabel;
+@property (weak, nonatomic, readonly, nullable) JSQMessagesLabel *cellBottomLabel;
 
 /**
  *  Returns the text view of the cell. This text view contains the message body text.
@@ -123,12 +123,12 @@
  *  its frame, nor should you remove this view from the cell or remove any of its subviews. 
  *  Doing so could result in unexpected behavior.
  */
-@property (weak, nonatomic, readonly, nonnull) UIView *messageBubbleContainerView;
+@property (weak, nonatomic, readonly, nullable) UIView *messageBubbleContainerView;
 
 /**
  *  Returns the avatar image view of the cell that is responsible for displaying avatar images.
  */
-@property (weak, nonatomic, readonly, nonnull) UIImageView *avatarImageView;
+@property (weak, nonatomic, readonly, nullable) UIImageView *avatarImageView;
 
 /**
  *  Returns the avatar container view of the cell. This view is the superview of 
@@ -141,7 +141,7 @@
  *  its frame, nor should you remove this view from the cell or remove any of its subviews.
  *  Doing so could result in unexpected behavior.
  */
-@property (weak, nonatomic, readonly, nonnull) UIView *avatarContainerView;
+@property (weak, nonatomic, readonly, nullable) UIView *avatarContainerView;
 
 /**
  *  The media view of the cell. This view displays the contents of a media message.
@@ -154,7 +154,7 @@
  *  Returns the underlying gesture recognizer for tap gestures in the avatarImageView of the cell.
  *  This gesture handles the tap event for the avatarImageView and notifies the cell's delegate.
  */
-@property (weak, nonatomic, readonly, nonnull) UITapGestureRecognizer *tapGestureRecognizer;
+@property (weak, nonatomic, readonly, nullable) UITapGestureRecognizer *tapGestureRecognizer;
 
 #pragma mark - Class methods
 

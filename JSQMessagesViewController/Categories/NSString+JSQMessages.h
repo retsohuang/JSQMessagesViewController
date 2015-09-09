@@ -23,6 +23,6 @@
 /**
  *  @return A copy of the receiver with all leading and trailing whitespace removed.
  */
-- (NSString *)jsq_stringByTrimingWhitespace;
+@property (nonatomic, readonly, copy) NSString *jsq_stringByTrimingWhitespace;
 
 @end

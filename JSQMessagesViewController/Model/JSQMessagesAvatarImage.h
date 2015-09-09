@@ -76,6 +76,6 @@
  */
 - (instancetype)initWithAvatarImage:(UIImage *)avatarImage
                    highlightedImage:(UIImage *)highlightedImage
-                   placeholderImage:(UIImage *)placeholderImage;
+                   placeholderImage:(UIImage *)placeholderImage NS_DESIGNATED_INITIALIZER;
 
 @end

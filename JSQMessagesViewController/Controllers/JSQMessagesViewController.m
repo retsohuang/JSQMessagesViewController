@@ -67,7 +67,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)jsq_configureMessagesViewController;
 
-- (NSString *)jsq_currentlyComposedMessageText;
+@property (nonatomic, readonly, copy) NSString *jsq_currentlyComposedMessageText;
 
 - (void)jsq_handleDidChangeStatusBarFrameNotification:(NSNotification *)notification;
 - (void)jsq_didReceiveMenuWillShowNotification:(NSNotification *)notification;
@@ -78,7 +78,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
 - (void)jsq_handleInteractivePopGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
 
-- (BOOL)jsq_inputToolbarHasReachedMaximumHeight;
+@property (nonatomic, readonly) BOOL jsq_inputToolbarHasReachedMaximumHeight;
 - (void)jsq_adjustInputToolbarForComposerTextViewContentSizeChange:(CGFloat)dy;
 - (void)jsq_adjustInputToolbarHeightConstraintByDelta:(CGFloat)dy;
 - (void)jsq_scrollComposerTextViewToBottomAnimated:(BOOL)animated;
@@ -86,7 +86,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 - (void)jsq_updateCollectionViewInsets;
 - (void)jsq_setCollectionViewInsetsTopValue:(CGFloat)top bottomValue:(CGFloat)bottom;
 
-- (BOOL)jsq_isMenuVisible;
+@property (nonatomic, readonly) BOOL jsq_isMenuVisible;
 
 - (void)jsq_addObservers;
 - (void)jsq_removeObservers;
@@ -280,12 +280,11 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    }
-    return UIInterfaceOrientationMaskAll;
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+  if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+  }
+  return UIInterfaceOrientationMaskAll;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -561,7 +560,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         return CGSizeZero;
     }
 
-    return CGSizeMake([collectionViewLayout itemWidth], kJSQMessagesTypingIndicatorFooterViewHeight);
+    return CGSizeMake(collectionViewLayout.itemWidth, kJSQMessagesTypingIndicatorFooterViewHeight);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -571,7 +570,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         return CGSizeZero;
     }
 
-    return CGSizeMake([collectionViewLayout itemWidth], kJSQMessagesLoadEarlierHeaderViewHeight);
+    return CGSizeMake(collectionViewLayout.itemWidth, kJSQMessagesLoadEarlierHeaderViewHeight);
 }
 
 #pragma mark - Collection view delegate
@@ -609,7 +608,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 {
     if (action == @selector(copy:)) {
         id<JSQMessageData> messageData = [collectionView.dataSource collectionView:collectionView messageDataForItemAtIndexPath:indexPath];
-        [[UIPasteboard generalPasteboard] setString:[messageData text]];
+        [UIPasteboard generalPasteboard].string = [messageData text];
     }
 }
 
@@ -740,7 +739,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
                                                     name:UIMenuControllerWillShowMenuNotification
                                                   object:nil];
 
-    UIMenuController *menu = [notification object];
+    UIMenuController *menu = notification.object;
     [menu setMenuVisible:NO animated:NO];
 
     JSQMessagesCollectionViewCell *selectedCell = (JSQMessagesCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:self.selectedIndexPathForMenu];
@@ -777,8 +776,8 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
         if (object == self.inputToolbar.contentView.textView
             && [keyPath isEqualToString:NSStringFromSelector(@selector(contentSize))]) {
 
-            CGSize oldContentSize = [[change objectForKey:NSKeyValueChangeOldKey] CGSizeValue];
-            CGSize newContentSize = [[change objectForKey:NSKeyValueChangeNewKey] CGSizeValue];
+            CGSize oldContentSize = [change[NSKeyValueChangeOldKey] CGSizeValue];
+            CGSize newContentSize = [change[NSKeyValueChangeNewKey] CGSizeValue];
 
             CGFloat dy = newContentSize.height - oldContentSize.height;
 
@@ -950,7 +949,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 {
     //  check if cell copy menu is showing
     //  it is only our menu if `selectedIndexPathForMenu` is not `nil`
-    return self.selectedIndexPathForMenu != nil && [[UIMenuController sharedMenuController] isMenuVisible];
+    return self.selectedIndexPathForMenu != nil && [UIMenuController sharedMenuController].menuVisible;
 }
 
 #pragma mark - Utilities

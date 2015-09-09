@@ -48,6 +48,6 @@
  *
  *  @return An initialized `JSQMediaItem` object if successful, `nil` otherwise.
  */
-- (instancetype)initWithMaskAsOutgoing:(BOOL)maskAsOutgoing;
+- (instancetype)initWithMaskAsOutgoing:(BOOL)maskAsOutgoing NS_DESIGNATED_INITIALIZER;
 
 @end

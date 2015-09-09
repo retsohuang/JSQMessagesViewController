@@ -43,7 +43,7 @@
  *
  *  @discussion You may return `nil` from this method while the media data is being downloaded.
  */
-- (UIView *)mediaView;
+@property (nonatomic, readonly, strong) UIView *mediaView;
 
 /**
  *  @return The frame size for the mediaView when displayed in a `JSQMessagesCollectionViewCell`. 
@@ -54,7 +54,7 @@
  *
  *  @warning You must return a size with non-zero, positive width and height values.
  */
-- (CGSize)mediaViewDisplaySize;
+@property (nonatomic, readonly) CGSize mediaViewDisplaySize;
 
 /**
  *  @return A placeholder media view to be displayed if mediaView is not yet available, or `nil`.
@@ -68,7 +68,7 @@
  *
  *  @see JSQMessagesMediaPlaceholderView.
  */
-- (UIView *)mediaPlaceholderView;
+@property (nonatomic, readonly, strong) UIView *mediaPlaceholderView;
 
 /**
  *  @return An integer that can be used as a table address in a hash table structure.
@@ -76,6 +76,6 @@
  *  @discussion This value must be unique for each media item with distinct contents.
  *  This value is used to cache layout information in the collection view.
  */
-- (NSUInteger)mediaHash;
+@property (nonatomic, readonly) NSUInteger mediaHash;
 
 @end

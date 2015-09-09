@@ -101,7 +101,7 @@
     return self;
 }
 
-- (id)init
+- (instancetype)init
 {
     NSAssert(NO, @"%s is not a valid initializer for %@.", __PRETTY_FUNCTION__, [self class]);
     return nil;

@@ -369,7 +369,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
         
         [self.dynamicAnimator.behaviors enumerateObjectsUsingBlock:^(UIAttachmentBehavior *springBehaviour, NSUInteger idx, BOOL *stop) {
             [self jsq_adjustSpringBehavior:springBehaviour forTouchLocation:touchLocation];
-            [self.dynamicAnimator updateItemUsingCurrentState:[springBehaviour.items firstObject]];
+            [self.dynamicAnimator updateItemUsingCurrentState:(springBehaviour.items).firstObject];
         }];
     }
     
@@ -577,14 +577,14 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
     NSArray *behaviors = self.dynamicAnimator.behaviors;
     
     NSIndexSet *indexSet = [behaviors indexesOfObjectsPassingTest:^BOOL(UIAttachmentBehavior *springBehaviour, NSUInteger index, BOOL *stop) {
-        UICollectionViewLayoutAttributes *layoutAttributes = [springBehaviour.items firstObject];
+        UICollectionViewLayoutAttributes *layoutAttributes = (springBehaviour.items).firstObject;
         return ![visibleItemsIndexPaths containsObject:layoutAttributes.indexPath];
     }];
     
     NSArray *behaviorsToRemove = [self.dynamicAnimator.behaviors objectsAtIndexes:indexSet];
     
     [behaviorsToRemove enumerateObjectsUsingBlock:^(UIAttachmentBehavior *springBehaviour, NSUInteger index, BOOL *stop) {
-        UICollectionViewLayoutAttributes *layoutAttributes = [springBehaviour.items firstObject];
+        UICollectionViewLayoutAttributes *layoutAttributes = (springBehaviour.items).firstObject;
         [self.dynamicAnimator removeBehavior:springBehaviour];
         [self.visibleIndexPaths removeObject:layoutAttributes.indexPath];
     }];
@@ -592,7 +592,7 @@ const CGFloat kJSQMessagesCollectionViewAvatarSizeDefault = 30.0f;
 
 - (void)jsq_adjustSpringBehavior:(UIAttachmentBehavior *)springBehavior forTouchLocation:(CGPoint)touchLocation
 {
-    UICollectionViewLayoutAttributes *item = [springBehavior.items firstObject];
+    UICollectionViewLayoutAttributes *item = (springBehavior.items).firstObject;
     CGPoint center = item.center;
     
     //  if touch is not (0,0) -- adjust item center "in flight"

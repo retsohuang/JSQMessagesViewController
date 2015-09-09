@@ -38,10 +38,9 @@
 @implementation JSQLocationMediaItem
 
 #pragma mark - Initialization
-
 - (instancetype)initWithLocation:(CLLocation *)location
 {
-    self = [super init];
+    self = [super initWithMaskAsOutgoing:self.appliesMediaViewMaskAsOutgoing];
     if (self) {
         [self setLocation:location withCompletionHandler:nil];
     }
@@ -64,7 +63,7 @@
 
 - (void)setAppliesMediaViewMaskAsOutgoing:(BOOL)appliesMediaViewMaskAsOutgoing
 {
-    [super setAppliesMediaViewMaskAsOutgoing:appliesMediaViewMaskAsOutgoing];
+    super.appliesMediaViewMaskAsOutgoing = appliesMediaViewMaskAsOutgoing;
     _cachedMapSnapshotImage = nil;
     _cachedMapImageView = nil;
 }

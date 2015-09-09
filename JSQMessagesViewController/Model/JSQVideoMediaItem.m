@@ -68,7 +68,7 @@
 
 - (void)setAppliesMediaViewMaskAsOutgoing:(BOOL)appliesMediaViewMaskAsOutgoing
 {
-    [super setAppliesMediaViewMaskAsOutgoing:appliesMediaViewMaskAsOutgoing];
+    super.appliesMediaViewMaskAsOutgoing = appliesMediaViewMaskAsOutgoing;
     _cachedVideoImageView = nil;
 }
 

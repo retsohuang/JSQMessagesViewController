@@ -113,7 +113,7 @@
 
 - (NSUInteger)hash
 {
-    return [NSNumber numberWithBool:self.appliesMediaViewMaskAsOutgoing].hash;
+    return @(self.appliesMediaViewMaskAsOutgoing).hash;
 }
 
 - (NSString *)description

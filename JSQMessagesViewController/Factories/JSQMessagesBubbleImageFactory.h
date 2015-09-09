@@ -49,7 +49,7 @@
  *
  *  @return An initialized `JSQMessagesBubbleImageFactory` object if created successfully, `nil` otherwise.
  */
-- (instancetype)initWithBubbleImage:(UIImage *)bubbleImage capInsets:(UIEdgeInsets)capInsets;
+- (instancetype)initWithBubbleImage:(UIImage *)bubbleImage capInsets:(UIEdgeInsets)capInsets NS_DESIGNATED_INITIALIZER;
 
 /**
  *  Creates and returns a `JSQMessagesBubbleImage` object with the specified color for *outgoing* message image bubbles.

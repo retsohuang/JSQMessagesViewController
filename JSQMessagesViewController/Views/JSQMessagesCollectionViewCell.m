@@ -196,13 +196,13 @@
 
 - (void)setHighlighted:(BOOL)highlighted
 {
-    [super setHighlighted:highlighted];
+    super.highlighted = highlighted;
     self.messageBubbleImageView.highlighted = highlighted;
 }
 
 - (void)setSelected:(BOOL)selected
 {
-    [super setSelected:selected];
+    super.selected = selected;
     self.messageBubbleImageView.highlighted = selected;
 }
 
@@ -214,7 +214,7 @@
 //
 - (void)setBounds:(CGRect)bounds
 {
-    [super setBounds:bounds];
+    super.bounds = bounds;
 
     if ([UIDevice jsq_isCurrentDeviceBeforeiOS8]) {
         self.contentView.frame = bounds;
@@ -225,7 +225,7 @@
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
-    [super setBackgroundColor:backgroundColor];
+    super.backgroundColor = backgroundColor;
 
     self.cellTopLabel.backgroundColor = backgroundColor;
     self.messageBubbleTopLabel.backgroundColor = backgroundColor;

@@ -31,7 +31,7 @@
 - (void)jsq_removeTextViewNotificationObservers;
 - (void)jsq_didReceiveTextViewNotification:(NSNotification *)notification;
 
-- (NSDictionary *)jsq_placeholderTextAttributes;
+@property (nonatomic, readonly, copy) NSDictionary *jsq_placeholderTextAttributes;
 
 @end
 
@@ -105,7 +105,7 @@
 
 - (BOOL)hasText
 {
-    return ([[self.text jsq_stringByTrimingWhitespace] length] > 0);
+    return ([self.text jsq_stringByTrimingWhitespace].length > 0);
 }
 
 #pragma mark - Setters
@@ -134,25 +134,25 @@
 
 - (void)setText:(NSString *)text
 {
-    [super setText:text];
+    super.text = text;
     [self setNeedsDisplay];
 }
 
 - (void)setAttributedText:(NSAttributedString *)attributedText
 {
-    [super setAttributedText:attributedText];
+    super.attributedText = attributedText;
     [self setNeedsDisplay];
 }
 
 - (void)setFont:(UIFont *)font
 {
-    [super setFont:font];
+    super.font = font;
     [self setNeedsDisplay];
 }
 
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
 {
-    [super setTextAlignment:textAlignment];
+    super.textAlignment = textAlignment;
     [self setNeedsDisplay];
 }
 
@@ -162,7 +162,7 @@
 {
     [super drawRect:rect];
     
-    if ([self.text length] == 0 && self.placeHolder) {
+    if ((self.text).length == 0 && self.placeHolder) {
         [self.placeHolderTextColor set];
         
         [self.placeHolder drawInRect:CGRectInset(rect, 7.0f, 5.0f)

@@ -90,7 +90,7 @@
  *
  *  @warning You must not return `nil` from this method. This value does not need to be unique.
  */
-- (NSString *)senderDisplayName;
+@property (nonatomic, readonly, copy) NSString *senderDisplayName;
 
 /**
  *  Asks the data source for the current sender's unique identifier, that is, the current user who is sending messages.
@@ -99,7 +99,7 @@
  *
  *  @warning You must not return `nil` from this method. This value must be unique.
  */
-- (NSString *)senderId;
+@property (nonatomic, readonly, copy) NSString *senderId;
 
 /**
  *  Asks the data source for the text to display in the `cellTopLabel` for the specified
